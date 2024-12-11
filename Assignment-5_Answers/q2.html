@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <style>
+            th, td {
+                border: 1px solid palevioletred;
+            }
+            th{
+                background-color: black;
+                color: wheat;
+            }
+            tr:nth-child(even) {
+                background-color: lightblue; /* Light blue for even rows */
+            }
+            tr:nth-child(odd) {
+                background-color: lightcoral; /* Light coral for odd rows */
+            }
+            .edit {
+                background-color: green;
+            }
+            .delete {
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Semester</th>
+                    <th>Registration Number</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="name">John</td>
+                    <td class="age">12</td>
+                    <td class="semester">2</td>
+                    <td class="reg">89889787</td>
+                    <td class="action">
+                        <button class="edit">Edit</button>
+                        <button class="delete">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="name">Marcos</td>
+                    <td class="age">82</td>
+                    <td class="semester">8</td>
+                    <td class="reg">8789787</td>
+                    <td class="action">
+                        <button class="edit">Edit</button>
+                        <button class="delete">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            $(document).on('click', '.edit', function(){
+                var row = $(this).closest('tr');
+                var name = row.find('.name').text();
+                var age = row.find('.age').text();
+                var semester = row.find('.semester').text();
+                var regNum = row.find('.reg').text();
+
+                // Prompt the user for new values
+                var newName = prompt("Edit Name", name);
+                var newAge = prompt("Edit Age", age);
+                var newSemester = prompt("Edit Semester", semester);
+                var newReg = prompt("Edit Registration Number", regNum);
+
+                // Update the row if the user provides new values
+                if (newName && newAge && newSemester && newReg) {
+                    row.find('.name').text(newName);
+                    row.find('.age').text(newAge);
+                    row.find('.semester').text(newSemester);
+                    row.find('.reg').text(newReg);
+                }
+            });
+
+            $(document).on('click', '.delete', function(){
+                var row = $(this).closest('tr');
+                row.remove(); // Remove the row from the table
+            });
+        </script>
+    </body>
+</html>

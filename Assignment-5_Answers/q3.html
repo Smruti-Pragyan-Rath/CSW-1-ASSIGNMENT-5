@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <style>
+            th, td {
+                border: 1px solid palevioletred;
+            }
+            th{
+                background-color: black;
+                color: wheat;
+            }
+            tr:nth-child(even) {
+                background-color: lightblue; /* Light blue for even rows */
+            }
+            tr:nth-child(odd) {
+                background-color: lightcoral; /* Light coral for odd rows */
+            }
+            .edit {
+                background-color: green;
+            }
+            .delete {
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" id="searchBar" placeholder="Search by name..." />
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Semester</th>
+                    <th>Registration Number</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="name">John</td>
+                    <td class="age">12</td>
+                    <td class="semester">2</td>
+                    <td class="reg">89889787</td>
+                    <td class="action">
+                        <button class="edit">Edit</button>
+                        <button class="delete">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="name">Marcos</td>
+                    <td class="age">82</td>
+                    <td class="semester">8</td>
+                    <td class="reg">8789787</td>
+                    <td class="action">
+                        <button class="edit">Edit</button>
+                        <button class="delete">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            $(document).ready(function() {
+                // Filter rows based on the search input
+                $('#searchBar').on('input', function() {
+                    var searchText = $(this).val().toLowerCase();
+                    
+                    $('table tbody tr').filter(function() {
+                        var name = $(this).find('.name').text().toLowerCase();
+                        $(this).toggle(name.indexOf(searchText) > -1);
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

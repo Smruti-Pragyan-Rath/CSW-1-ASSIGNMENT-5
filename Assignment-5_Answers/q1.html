@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <style>
+            #u1{
+                background-color: blue;
+                color: black;
+            }
+            #u2{
+                background-color: blue;
+                color: blueviolet;
+            }
+            #b1{
+                background-color: aqua;
+                color: white;
+            }
+            #b1:hover{
+                background-color: blueviolet;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>School Management System</h1>
+        <p>Introductory Paragraph</p>
+
+        <form action="q2.html">
+            <label>User Name</label>
+            <input type="text" id="u1" placeholder="Enter Username">
+            <br>
+            <br>
+            <label>Password</label>
+            <input type="password" id="u2" placeholder="Enter Password" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}">
+            <br>
+            <br>
+            <button id="b1">Login</button>
+        </form>
+    </body>
+</html>
